@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-color: #0a192f;
+  --text-color: #8892b0;
+  --heading-color: #ccd6f6;
+  --primary-color: #64ffda;
+  --card-bg: #112240;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--heading-color);
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.1rem 5%;
+  background-color: rgba(10, 25, 47, 0.95);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  /* font-size: 1.5rem; */
+  font-weight: 700;
+  color: var(--heading-color);
+  width: 50%;
+  padding: 10px 0 0 0;
+}
+
+.logo img {
+  width: 10%;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* General Section Styles */
+section {
+  padding: 100px 10%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  position: relative;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background: var(--primary-color);
+  bottom: -10px;
+  left: 0;
+}
+
+/* 1. The Base State (Hidden) */
+.scroll-reveal {
+  opacity: 0;
+  /* The transition dictates the speed and smoothness */
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+/* 2. The Starting Positions based on direction */
+.slide-left {
+  transform: translateX(-100px);
+  /* Starts 100px to the left */
+}
+
+.slide-right {
+  transform: translateX(100px);
+  /* Starts 100px to the right */
+}
+
+.slide-up {
+  transform: translateY(100px);
+  /* Starts 100px down */
+}
+
+/* 3. The 'Visible' State (Triggered by JavaScript) */
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+  /* Returns to normal position */
+}
+
+/* Hero Section */
+.hero {
+  flex-direction: row;
+  /* Places text and image side-by-side */
+  align-items: center;
+  /* Centers them vertically */
+  justify-content: space-between;
+  gap: 3rem;
+  /* Adds breathing room between text and image */
+}
+
+/* Hero Content (Left Side) */
+.hero-content {
+  flex: 1;
+  /* Takes up available space */
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.hero p {
+  max-width: 500px;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+/* Hero Image (Right Side) */
+.hero-image {
+  flex: 1;
+  /* Takes up available space */
+  display: flex;
+  justify-content: center;
+  /* Centers the image inside its container */
+  max-width: 450px;
+  /* Prevents the image from getting too huge on big screens */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+       
+    -webkit-mask-image: linear-gradient(to top, black 55%, transparent 90%);
+    mask-image: linear-gradient(to top, black 55%, transparent 90%);
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.primary-btn {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.primary-btn:hover {
+  background: rgba(100, 255, 218, 0.1);
+}
+
+.secondary-btn {
+  color: var(--heading-color);
+  margin-left: 15px;
+}
+
+.secondary-btn:hover {
+  color: var(--primary-color);
+}
+
+/* Skills */
+
+/* Skill Categories Styling */
+.skill-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  color: var(--text-color);
+  /* Matches the muted blue-grey */
+}
+
+.category-label {
+  font-weight: 700;
+  /* min-width: 180px; */
+  font-size: 1.3rem;
+  color: rgba(204, 214, 246, 0.7);
+  text-transform: uppercase;
+  /* Slightly dimmed heading color */
+}
+
+.category-icons {
+  display: flex;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  padding-left: 5px;
+}
+
+/* SVG Icon Styling */
+.category-icons svg {
+  width: 45px;
+  height: 45px;
+  color: var(--text-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.category-icons svg:hover {
+  color: var(--primary-color);
+  /* Turns Teal on hover */
+  transform: translateY(-8px) scale(1.1);
+}
+
+/* Tooltip Implementation */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: var(--card-bg);
+  color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 768px) {
+  .skill-category {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .category-label {
+    min-width: unset;
+  }
+}
+
+
+/* .skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.skills span {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+} */
+
+/* Projects Grid */
+.project-grid {
+  display: grid;
+  /* 1fr 1fr forces exactly 2 columns.*/
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 2rem;
+}
+
+.project-card {
+  background: var(--card-bg, #112240); 
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s;
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  display: flex;
+  flex-direction: column; 
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color, #64ffda);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-img {
+  height: 390px; 
+  width: 100%;
+  background-color: #0a192f; 
+  overflow: hidden;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+  opacity: 0.7; 
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-img img {
+  opacity: 1; 
+  transform: scale(1.05); 
+}
+
+.project-info {
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.2); 
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
+
+.project-info h3 {
+  margin-bottom: 10px;
+  color: #e2e8f0; 
+  font-size: 1.4rem;
+}
+
+.project-info p {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #8892b0; 
+  line-height: 1.5;
+}
+
+.btn-small {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  margin-top: auto; 
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact & Footer */
+.contact {
+  text-align: center;
+  align-items: center;
+}
+
+.contact p {
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.social-links {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--card-bg);
+  font-size: 0.9rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+  /* Existing mobile menu CSS... */
+  .menu-btn {
+    display: block;
+    color: var(--heading-color);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--card-bg);
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* NEW: Mobile Hero adjustments */
+  .hero {
+    flex-direction: column;
+    /* Stacks text on top, image on bottom */
+    text-align: center;
+    /* Centers the text */
+    padding-top: 120px;
+    /* Makes room for the navbar */
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers the buttons */
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+    max-width: 300px;
+    /* Makes image slightly smaller on phones */
+  }
+}
